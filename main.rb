@@ -1,14 +1,21 @@
 # main.rb
 
 require './person'
-require './capitalize_decorator'
-require './trimmer_decorator'
+require './book'
+require './rental'
+require './student'
+require './classroom'
 
 person = Person.new(22, 'maximilianus')
 puts person.correct_name
 
-capitalized_person = CapitalizeDecorator.new(person)
-puts capitalized_person.correct_name
+book = Book.new('book title', 'rida')
+puts book.title
 
-capitalized_trimmed_person = TrimmerDecorator.new(capitalized_person)
-puts capitalized_trimmed_person.correct_name
+rental = Rental.new('2023-12-22', book, person)
+puts rental.date
+
+student = Student.new('2a', 19, 'yassin')
+classroom = Classroom.new('2a')
+classroom.add_student(student)
+puts classroom

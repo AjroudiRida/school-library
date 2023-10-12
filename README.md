@@ -6,12 +6,14 @@
 - [📖 About the Project](#about-project)
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
+    - [Key Features](#key-features)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
   - [Install](#install)
   - [Usage](#usage)
 - [👥 Authors](#authors)
+- [🔭 Future Features](#future-features)
 - [🤝 Contributing](#contributing)
 - [⭐️ Show your support](#support)
 - [🙏 Acknowledgements](#acknowledgements)
@@ -31,6 +33,12 @@
 - Ruby
 
 <!-- GETTING STARTED -->
+
+### Key Features <a name="key-features"></a>
+
+- **Associations Implementation**
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p> 
 
 ## 💻 Getting Started <a name="getting-started"></a>
 
@@ -84,6 +92,12 @@ Example:
 👤 **Author**
 
 - GitHub: [@AjroudiRida](https://github.com/ajroudirida)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## 🔭 Future Features <a name="future-features"></a>
+
+- Add the console menu
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
