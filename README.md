@@ -17,7 +17,6 @@
 - [🤝 Contributing](#contributing)
 - [⭐️ Show your support](#support)
 - [🙏 Acknowledgements](#acknowledgements)
-- [❓ FAQ](#faq)
 - [📝 License](#license)
 
 <!-- PROJECT DESCRIPTION -->
@@ -89,7 +88,11 @@ Example:
 
 ## 👥 Authors <a name="authors"></a>
 
-👤 **Author**
+👤 **Author1**
+
+- GitHub: [@githubhandle](https://github.com/MozamelJawad)
+
+👤 **Author2**
 
 - GitHub: [@AjroudiRida](https://github.com/ajroudirida)
 
