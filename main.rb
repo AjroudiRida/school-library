@@ -1,6 +1,12 @@
 require_relative 'app'
+require_relative 'handle_option'
+require_relative 'handle_invalid_option'
+require_relative 'choose_option'
+require_relative 'exit_app'
 
 class Main
+include HandleOption, HandleInvalidOption, ChooseOption, ExitApp
+
   def initialize
     @app = App.new
   end
@@ -17,41 +23,41 @@ class Main
     puts '7 - Exit'
   end
 
-  def handle_option(option)
-    case option
-    when 1 then @app.book_list
-    when 2 then @app.people_list
-    when 3 then @app.create_a_person
-    when 4 then @app.create_a_book
-    when 5 then @app.create_a_rental
-    when 6 then @app.list_all_rentals_for_person_id
-    when 7 then exit_app
-    end
-  end
+  # def handle_option(option)
+  #   case option
+  #   when 1 then @app.book_list
+  #   when 2 then @app.people_list
+  #   when 3 then @app.create_a_person
+  #   when 4 then @app.create_a_book
+  #   when 5 then @app.create_a_rental
+  #   when 6 then @app.list_all_rentals_for_person_id
+  #   when 7 then exit_app
+  #   end
+  # end
 
-  def handle_invalid_option
-    puts 'Invalid option. Please enter a number between 1 and 7.'
-    show_options
-    choose_option
-  end
+  # def handle_invalid_option
+  #   puts 'Invalid option. Please enter a number between 1 and 7.'
+  #   show_options
+  #   choose_option
+  # end
 
-  def choose_option
-    option = gets.chomp.to_i
+  # def choose_option
+  #   option = gets.chomp.to_i
 
-    if option >= 1 && option <= 7
-      handle_option(option)
-      show_options unless option == 7
-      choose_option unless option == 7
+  #   if option >= 1 && option <= 7
+  #     handle_option(option)
+  #     show_options unless option == 7
+  #     choose_option unless option == 7
 
-    else
-      handle_invalid_option
-    end
-  end
+  #   else
+  #     handle_invalid_option
+  #   end
+  # end
 
-  def exit_app
-    puts 'Thank you for using this app!'
-    exit
-  end
+  # def exit_app
+  #   puts 'Thank you for using this app!'
+  #   exit
+  # end
 end
 
 main = Main.new
