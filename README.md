@@ -88,11 +88,11 @@ Example:
 
 ## 👥 Authors <a name="authors"></a>
 
-👤 **Author1**
+👤 **Mozamel Jawad**
 
 - GitHub: [@githubhandle](https://github.com/MozamelJawad)
 
-👤 **Author2**
+👤 **Rida Ajroudi**
 
 - GitHub: [@AjroudiRida](https://github.com/ajroudirida)
 
