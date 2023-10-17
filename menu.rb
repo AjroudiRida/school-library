@@ -22,9 +22,9 @@ class Menu
     when 6
       @app.list_all_rentals_for_person_id
     when 7
-      puts "Thank you for using the app!"
+      puts 'Thank you for using the app!'
     else
-      puts "Invalid option. Please try again."
+      puts 'Invalid option. Please try again.'
     end
   end
 
