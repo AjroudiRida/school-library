@@ -10,17 +10,17 @@ class Menu
   def process_option(option)
     case option
     when 1
-      @app.book_list
+      @app.list_books
     when 2
-      @app.people_list
+      @app.list_people
     when 3
-      @app.create_a_person
+      @app.create_person
     when 4
-      @app.create_a_book
+      @app.create_book
     when 5
-      @app.create_a_rental
+      @app.create_rental
     when 6
-      @app.list_all_rentals_for_person_id
+      @app.list_rentals
     when 7
       puts 'Thank you for using the app!'
     else

@@ -15,6 +15,7 @@ def main
 
     menu.process_option(option)
   end
+  puts 'Thank you for using the app!'
 end
 
 main
