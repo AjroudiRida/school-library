@@ -1,5 +1,6 @@
 require_relative 'app'
 require_relative 'menu'
+require_relative 'validate_input'
 
 def main
   puts "\nWelcome to School Library App!\n"
@@ -9,7 +10,7 @@ def main
 
   loop do
     menu.display
-    option = gets.chomp.to_i
+    option = user_input('int')
 
     break if option == 7
 

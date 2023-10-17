@@ -4,6 +4,7 @@ require_relative 'person'
 require_relative 'rental'
 require_relative 'student'
 require_relative 'teacher'
+require_relative 'validate_input'
 
 class App
   attr_accessor :books, :people, :rentals
@@ -34,7 +35,7 @@ class App
 
   def create_person
     print 'Do you want to create a student (1) or a teacher (2)? [input the number]: '
-    student_or_teacher = gets.chomp.to_i
+    student_or_teacher = user_input('int')
     case student_or_teacher
     when 1
       create_student
@@ -47,13 +48,13 @@ class App
 
   def create_student
     print 'Age: '
-    age = gets.chomp.to_i
+    age = user_input('str')
 
     print 'Name: '
-    name = gets.chomp.to_s
+    name = user_input('str')
 
     print 'Has parent permission? [Y / N]: '
-    parent_permission = gets.chomp.to_s
+    parent_permission = user_input('str')
 
     if parent_permission =~ /^[Yy]/
       student = Student.new('Unknown', age, name, parent_permission: true)
@@ -70,13 +71,13 @@ class App
 
   def create_teacher
     print 'Age: '
-    age = gets.chomp.to_i
+    age = user_input('str')
 
     print 'Name: '
-    name = gets.chomp.to_s
+    name = user_input('str')
 
     print 'Specialization: '
-    specialization = gets.chomp.to_s
+    specialization = user_input('str')
 
     teacher = Teacher.new(specialization, age, name)
     @people.push(teacher)
@@ -85,10 +86,10 @@ class App
 
   def create_book
     print 'Title: '
-    title = gets.chomp.to_s
+    title = user_input('str')
 
     print 'Author: '
-    author = gets.chomp.to_s
+    author = user_input('str')
 
     @books.push(Book.new(title, author))
     puts 'Book created successfully'
@@ -103,16 +104,16 @@ class App
 
       list_books(with_index: true)
       print "Enter book's index: "
-      book_index = gets.chomp.to_i
+      book_index = user_input('int')
       book_index -= 1
       book = @books[book_index]
       list_people(with_index: true)
       print "Enter person's index: "
-      person_index = gets.chomp.to_i
+      person_index = user_input('int')
       person_index -= 1
       person = @people[person_index]
       print 'Date: '
-      date = gets.chomp.to_s
+      date = user_input('str')
       @rentals.push(Rental.new(date, book, person))
       puts 'Rental created successfully'
     end
@@ -120,7 +121,7 @@ class App
 
   def list_rentals
     print 'ID of person: '
-    id = gets.chomp.to_i
+    id = user_input('int')
     selected = @rentals.find_all { |rental| rental.person.id == id }
     if selected.empty?
       puts "Person with given id #{id} does not exist"
