@@ -31,19 +31,22 @@ def load_people
   people
 end
 
+
 def load_rentals
   rentals = []
   return rentals unless File.exist?('rentals.json')
   return rentals if File.empty?('rentals.json')
 
-  file_content = File.read('rentals.json')
-  rentalsarray = JSON.parse(file_content)
-
+  rentalsdata = File.read('rentals.json')
+  rentalsarray = JSON.parse(rentalsdata)
   rentalsarray.each do |rental|
-    person_id = rental['person']
-    if @people
-      person = @people.select { |pers| pers.id == person_id }
-      rentals << Rental.new(rental['date'], person[0], rental['book'])
+    person_info = @people.find { |person| person.id == rental['person'] }
+    book_info = @books.find { |book| book.title == rental['book'] }
+
+    if person_info && book_info
+      rentals << Rental.new(rental['date'], person_info, book_info)
+    else
+      puts "Unable to find person or book for rental: #{rental}"
     end
   end
   rentals

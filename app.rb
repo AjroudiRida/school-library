@@ -14,8 +14,8 @@ class App
 
   def initialize
     @books = load_books
-    @rentals = load_rentals
     @people = load_people
+    @rentals = load_rentals
   end
 
   def list_books(*)
