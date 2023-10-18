@@ -11,9 +11,8 @@ def load_books
   booksarray.each do |book|
     books << Book.new(book['title'], book['author'])
   end
-books
+  books
 end
-
 
 def load_people
   people = []

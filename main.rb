@@ -13,8 +13,8 @@ def main
     option = user_input('int')
 
     if option == 7
-    app.exist_app
-    break
+      app.exist_app
+      break
     end
 
     menu.process_option(option)

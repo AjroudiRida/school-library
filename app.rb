@@ -29,9 +29,11 @@ class App
     puts 'No person is registered' if @people.empty?
     @people.each_with_index do |person, i|
       if person.is_a?(Student)
-        puts "#{i + 1} [Student] ID: #{person.id} | Name: #{person.name} | Age: #{person.age} | classroom: #{person.classroom}"
+        puts "#{i + 1} [Student] ID: #{person.id} | Name: #{person.name} | Age: #{person.age}
+         | classroom: #{person.classroom}"
       elsif person.is_a?(Teacher)
-        puts "#{i + 1} [Teacher] ID: #{person.id} | Name: #{person.name} | Age: #{person.age} | specialization: #{person.specialization}"
+        puts "#{i + 1} [Teacher] ID: #{person.id} | Name: #{person.name} | Age: #{person.age}
+        | specialization: #{person.specialization}"
       end
     end
   end
@@ -56,7 +58,7 @@ class App
     print 'Name: '
     name = user_input('str')
 
-    print "Classroom: "
+    print 'Classroom: '
     classroom = user_input('str')
 
     print 'Has parent permission? [Y / N]: '
@@ -137,7 +139,6 @@ class App
     selected.map { |rental| puts "Date: #{rental.date}, Book \"#{rental.book.title}\" by #{rental.book.author}" }
   end
 
-
   def exist_app
     store_books(@books)
     store_people(@people)
@@ -147,6 +148,4 @@ class App
   def run
     main
   end
-
-
 end
