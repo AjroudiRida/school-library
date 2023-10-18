@@ -31,19 +31,19 @@ def load_people
 end
 
 
-# def load_rentals
-#   rentals = []
-#   return rentals if File.empty?('rentals.json')
+def load_rentals
+  rentals = []
+  return rentals if File.empty?('rentals.json')
 
-#   file_content = File.read('rentals.json')
-#   rentalsArray = JSON.parse(file_content)
+  file_content = File.read('rentals.json')
+  rentalsArray = JSON.parse(file_content)
 
-#   rentalsArray.each do |rental|
-#     person_id = rental['person']
-#     if @people
-#       person = @people.select { |pers| pers.id == person_id }
-#       rentals << Rental.new(rental['date'], person[0], rental['book'])
-#     end
-#   end
-#   rentals
-# end
+  rentalsArray.each do |rental|
+    person_id = rental['person']
+    if @people
+      person = @people.select { |pers| pers.id == person_id }
+      rentals << Rental.new(rental['date'], person[0], rental['book'])
+    end
+  end
+  rentals
+end
