@@ -31,7 +31,6 @@ def load_people
   people
 end
 
-
 def load_rentals
   rentals = []
   return rentals unless File.exist?('rentals.json')
@@ -43,11 +42,11 @@ def load_rentals
     person_info = @people.find { |person| person.id == rental['person'] }
     book_info = @books.find { |book| book.title == rental['book'] }
 
-    if person_info && book_info
-      rentals << Rental.new(rental['date'], person_info, book_info)
-    else
-      puts "Unable to find person or book for rental: #{rental}"
-    end
+    # if person_info && book_info
+    rentals << Rental.new(rental['date'], person_info, book_info)
+    # else
+    # puts "Unable to find person or book for rental: #{rental}"
+    # end
   end
   rentals
 end
