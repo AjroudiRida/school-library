@@ -22,7 +22,7 @@ def store_people(people_array)
 end
 
 
-# def store_rentals(rental_array)
-#    rentals = rental_array.map { |rental| { date: rental.date,  person: rental.person.id , book: rental.book.title}}
-#    File.write('rentals.json', JSON.generate(rentals))
-# end
+def store_rentals(rental_array)
+   rentals = rental_array.map { |rental| { date: rental.date,  person: rental.person.id , book: rental.book.title}}
+   File.write('rentals.json', JSON.generate(rentals))
+end
