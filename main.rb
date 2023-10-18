@@ -12,7 +12,10 @@ def main
     menu.display
     option = user_input('int')
 
-    break if option == 7
+    if option == 7
+    app.exist_app
+    break
+    end
 
     menu.process_option(option)
   end
