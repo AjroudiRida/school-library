@@ -27,13 +27,11 @@ class App
 
   def list_people(*)
     puts 'No person is registered' if @people.empty?
-    @people.each_with_index do |person, i|
-      if person.is_a?(Student)
-        puts "#{i + 1} [Student] ID: #{person.id} | Name: #{person.name} | Age: #{person.age}
-         | classroom: #{person.classroom}"
-      elsif person.is_a?(Teacher)
-        puts "#{i + 1} [Teacher] ID: #{person.id} | Name: #{person.name} | Age: #{person.age}
-        | specialization: #{person.specialization}"
+    @people.each_with_index do |per, i|
+      if per.is_a?(Student)
+        puts "#{i + 1} [Student] ID: #{per.id} Name: #{per.name} Age: #{per.age} classroom: #{per.classroom}"
+      elsif per.is_a?(Teacher)
+        puts "#{i + 1} [Teacher] ID: #{per.id} Name: #{per.name} Age: #{per.age} specialization: #{per.specialization}"
       end
     end
   end
@@ -65,8 +63,6 @@ class App
     parent_permission = user_input('str')
 
     if parent_permission =~ /^[Yy]/
-      student = Student.new(classroom, age, name, parent_permission: parent_permission)
-    elsif parent_permission =~ /^[Nn]/
       student = Student.new(classroom, age, name, parent_permission: parent_permission)
     else
       puts "Invalid choice. Please enter a valid option. (#{parent_permission})"

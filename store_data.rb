@@ -8,12 +8,11 @@ end
 def store_people(people_array)
   people = []
 
-  people_array.each do |person|
-    if person.is_a?(Student)
-      people << { class: 'student', age: person.age, name: person.name, id: person.id, classroom: person.classroom }
-    elsif person.is_a?(Teacher)
-      people << { class: 'teacher', age: person.age, name: person.name, id: person.id,
-                  specialization: person.specialization }
+  people_array.each do |per|
+    if per.is_a?(Student)
+      people << { class: 'student', age: per.age, name: per.name, id: per.id, classroom: per.classroom }
+    elsif per.is_a?(Teacher)
+      people << { class: 'teacher', age: per.age, name: per.name, id: per.id, specialization: per.specialization }
     end
   end
 
@@ -21,8 +20,7 @@ def store_people(people_array)
   File.write('people.json', people_data)
 end
 
-
 def store_rentals(rental_array)
-   rentals = rental_array.map { |rental| { date: rental.date,  person: rental.person.id , book: rental.book.title}}
-   File.write('rentals.json', JSON.generate(rentals))
+  rentals = rental_array.map { |rental| { date: rental.date, person: rental.person.id, book: rental.book.title } }
+  File.write('rentals.json', JSON.generate(rentals))
 end

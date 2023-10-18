@@ -30,15 +30,14 @@ def load_people
   people
 end
 
-
 def load_rentals
   rentals = []
   return rentals if File.empty?('rentals.json')
 
   file_content = File.read('rentals.json')
-  rentalsArray = JSON.parse(file_content)
+  rentalsarray = JSON.parse(file_content)
 
-  rentalsArray.each do |rental|
+  rentalsarray.each do |rental|
     person_id = rental['person']
     if @people
       person = @people.select { |pers| pers.id == person_id }
