@@ -2,7 +2,7 @@ require 'json'
 
 def load_books
   books = []
-  # return books unless File.exist?('books.json')
+  return books unless File.exist?('books.json')
   return books if File.empty?('books.json')
 
   file_content = File.read('books.json')
@@ -16,6 +16,7 @@ end
 
 def load_people
   people = []
+  return people unless File.exist?('people.json')
   return people if File.empty?('people.json')
 
   peopledata = File.read('people.json')
@@ -32,6 +33,7 @@ end
 
 def load_rentals
   rentals = []
+  return rentals unless File.exist?('rentals.json')
   return rentals if File.empty?('rentals.json')
 
   file_content = File.read('rentals.json')
