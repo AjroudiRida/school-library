@@ -1,6 +1,6 @@
-require './decorator'
+require_relative 'decorator'
 class TrimmerDecorator < Decorator
-  def correct_name
-    super.slice(0, 10) if super.size > 10
+  def correct_name(name)
+    name.strip[0...10]
   end
 end
