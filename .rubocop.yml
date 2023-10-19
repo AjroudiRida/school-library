@@ -19,8 +19,9 @@ Metrics/BlockLength:
   AllowedMethods: ['describe']
   Max: 30
 Metrics/CyclomaticComplexity:
-  Enabled: false  
-
+  Enabled: false
+Metrics/PerceivedComplexity:    
+  Enabled: false
 
 Style/Documentation:
   Enabled: false  

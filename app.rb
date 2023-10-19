@@ -5,14 +5,17 @@ require_relative 'rental'
 require_relative 'student'
 require_relative 'teacher'
 require_relative 'validate_input'
+require_relative 'store_data'
+require_relative 'load_data'
+require 'json'
 
 class App
   attr_accessor :books, :people, :rentals
 
   def initialize
-    @books = []
-    @rentals = []
-    @people = []
+    @books = load_books
+    @people = load_people
+    @rentals = load_rentals
   end
 
   def list_books(*)
@@ -24,11 +27,11 @@ class App
 
   def list_people(*)
     puts 'No person is registered' if @people.empty?
-    @people.each_with_index do |person, i|
-      if person.is_a?(Student)
-        puts "#{i + 1} [Student] ID: #{person.id} | Name: #{person.name} | Age: #{person.age}"
-      elsif person.is_a?(Teacher)
-        puts "#{i + 1} [Teacher] ID: #{person.id} | Name: #{person.name} | Age: #{person.age}"
+    @people.each_with_index do |per, i|
+      if per.is_a?(Student)
+        puts "#{i + 1} [Student] ID: #{per.id} Name: #{per.name} Age: #{per.age} classroom: #{per.classroom}"
+      elsif per.is_a?(Teacher)
+        puts "#{i + 1} [Teacher] ID: #{per.id} Name: #{per.name} Age: #{per.age} specialization: #{per.specialization}"
       end
     end
   end
@@ -53,13 +56,14 @@ class App
     print 'Name: '
     name = user_input('str')
 
+    print 'Classroom: '
+    classroom = user_input('str')
+
     print 'Has parent permission? [Y / N]: '
     parent_permission = user_input('str')
 
     if parent_permission =~ /^[Yy]/
-      student = Student.new('Unknown', age, name, parent_permission: true)
-    elsif parent_permission =~ /^[Nn]/
-      student = Student.new('Unknown', age, name, parent_permission: false)
+      student = Student.new(classroom, age, name, parent_permission: parent_permission)
     else
       puts "Invalid choice. Please enter a valid option. (#{parent_permission})"
       return
@@ -114,7 +118,7 @@ class App
       person = @people[person_index]
       print 'Date: '
       date = user_input('str')
-      @rentals.push(Rental.new(date, book, person))
+      @rentals.push(Rental.new(date, person, book))
       puts 'Rental created successfully'
     end
   end
@@ -129,6 +133,12 @@ class App
     end
     puts 'Rentals:'
     selected.map { |rental| puts "Date: #{rental.date}, Book \"#{rental.book.title}\" by #{rental.book.author}" }
+  end
+
+  def exist_app
+    store_books(@books)
+    store_people(@people)
+    store_rentals(@rentals)
   end
 
   def run
