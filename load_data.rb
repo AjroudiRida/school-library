@@ -23,9 +23,13 @@ def load_people
   peoplearray = JSON.parse(peopledata)
   peoplearray.each do |person|
     if person['class'] == 'student'
-      people << Student.new(person['classroom'], person['age'], person['name'], person['id'])
+      student = Student.new(person['classroom'], person['age'], person['name'])
+      student.id = person['id']
+      people << student
     elsif person['class'] == 'teacher'
-      people << Teacher.new(person['specialization'], person['age'], person['name'], person['id'])
+      teacher = Teacher.new(person['specialization'], person['age'], person['name'])
+      teacher.id = person['id']
+      people << teacher
     end
   end
   people
@@ -38,15 +42,21 @@ def load_rentals
 
   rentalsdata = File.read('rentals.json')
   rentalsarray = JSON.parse(rentalsdata)
+  load_people
+  # peoples.each do |people|
+  #   puts people.id
+  # end
   rentalsarray.each do |rental|
-    person_info = @people.find { |person| person.id == rental['person'] }
-    book_info = @books.find { |book| book.title == rental['book'] }
+    person_info = load_people.find do |person|
+      person.id == rental['person']
+    end
+    book_info = load_books.find { |book| book.title == rental['book'] }
 
-    # if person_info && book_info
-    rentals << Rental.new(rental['date'], person_info, book_info)
-    # else
-    # puts "Unable to find person or book for rental: #{rental}"
-    # end
+    if person_info && book_info
+      rentals << Rental.new(rental['date'], person_info, book_info)
+    else
+      puts "Unable to find person or book for rental: #{rental}"
+    end
   end
   rentals
 end
