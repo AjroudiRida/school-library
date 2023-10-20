@@ -18,6 +18,10 @@ describe Student do
     it 'sets the name parameter to the Student class' do
       expect(student.name).to eq('Alice')
     end
+
+    it 'sets the parent_permission parameter to the Student class' do
+      expect(student.parent_permission).to eq(true)
+    end
   end
 
   describe '#classroom=' do

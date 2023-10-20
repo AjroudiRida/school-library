@@ -16,6 +16,10 @@ describe Teacher do
     it 'sets the name parameter to the Teacher class' do
       expect(teacher.name).to eq('Bob')
     end
+
+    it 'sets the parent_permission parameter to the Teacher class' do
+      expect(teacher.parent_permission).to eq(false)
+    end
   end
 
   describe '#can_use_services?' do
