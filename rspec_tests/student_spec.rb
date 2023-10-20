@@ -1,10 +1,8 @@
-# File: spec/student_spec.rb
 require_relative '../student'
 require_relative '../classroom'
 require 'rspec'
 
 describe Student do
-  # Use let to define variables that are lazily evaluated
   let(:classroom) { Classroom.new('Math') }
   let(:student) { Student.new(classroom, 20, 'Alice', true) }
 
